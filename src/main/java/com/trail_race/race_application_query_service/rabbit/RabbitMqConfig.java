@@ -65,6 +65,11 @@ public class RabbitMqConfig {
         return new Queue("echo", true, false, false);
     }
 
+    @Bean
+    public Queue commandQueue() {
+        return new Queue("command", true, false, false);
+    }
+
     /**
      * Binding must be declared between exchange and queue. This is sending each message to corresponding inbound
      * or outbound queue. If wish to fanout messages to multiple queues see example
@@ -73,5 +78,10 @@ public class RabbitMqConfig {
     @Bean
     public Binding echoExchangeBinding(TopicExchange raceExchange, Queue echoQueue) {
         return BindingBuilder.bind(echoQueue).to(raceExchange).with("to.*");
+    }
+
+    @Bean
+    public Binding commandExchangeBinding(TopicExchange raceExchange, Queue commandQueue) {
+        return BindingBuilder.bind(commandQueue).to(raceExchange).with("to.*");
     }
 }
