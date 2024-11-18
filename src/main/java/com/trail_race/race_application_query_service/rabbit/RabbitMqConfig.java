@@ -1,5 +1,6 @@
 package com.trail_race.race_application_query_service.rabbit;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
 
 @EnableRabbit
 @Configuration
+@Slf4j
 public class RabbitMqConfig {
 
     @Bean
@@ -27,7 +29,7 @@ public class RabbitMqConfig {
         connectionFactory.setUsername(properties.getUsername());
         connectionFactory.setPassword(properties.getPassword());
 
-        System.out.println("Creating connection factory with: " + properties.getUsername()
+        log.info("Creating connection factory with: " + properties.getUsername()
                 + "@" + properties.getHost() + ":" + properties.getPort());
         return connectionFactory;
     }
