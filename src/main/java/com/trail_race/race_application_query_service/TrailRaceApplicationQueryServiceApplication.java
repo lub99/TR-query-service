@@ -2,12 +2,13 @@ package com.trail_race.race_application_query_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
+@EnableJpaRepositories
 public class TrailRaceApplicationQueryServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(TrailRaceApplicationQueryServiceApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(TrailRaceApplicationQueryServiceApplication.class, args);
+    }
 }
