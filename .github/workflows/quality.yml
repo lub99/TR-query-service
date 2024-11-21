@@ -57,8 +57,7 @@ jobs:
         run: |
           PGPASSWORD=root psql -h 127.0.0.1 -p 5432 -U root -c "CREATE USER race_user WITH PASSWORD 'race_password'"
           PGPASSWORD=root psql -h 127.0.0.1 -p 5432 -U root -c "CREATE DATABASE race_db WITH ENCODING 'UTF8' LC_COLLATE 'C.UTF-8' LC_CTYPE 'C.UTF-8' TEMPLATE template0;"
-          PGPASSWORD=root psql -h 127.0.0.1 -p 5432 -U root -c "GRANT ALL PRIVILEGES ON DATABASE race_db TO race_user;"
-          PGPASSWORD=root psql -h 127.0.0.1 -p 5432 -U root -d race_db -c "GRANT USAGE ON SCHEMA public TO race_user;"
+          PGPASSWORD=root psql -h 127.0.0.1 -p 5432 -U root -d race_db -c "GRANT USAGE, CREATE ON SCHEMA public TO race_user;"
           PGPASSWORD=root psql -h 127.0.0.1 -p 5432 -U root -d race_db -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO race_user;"
           PGPASSWORD=root psql -h 127.0.0.1 -p 5432 -U root -d race_db -c "GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO race_user;"
 
