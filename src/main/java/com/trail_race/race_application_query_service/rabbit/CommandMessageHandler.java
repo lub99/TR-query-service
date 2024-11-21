@@ -17,17 +17,12 @@ public class CommandMessageHandler {
     public void handleMessage(CommandMessage commandMessage) {
         log.debug("Handling command message:" + commandMessage);
 
-        if (commandMessage.getCommandType() == null) {
-            throw new IllegalArgumentException("CommandType is null");
-        }
-
         ApplicationRequest applicationRequest = mapToRequest(commandMessage);
         switch (commandMessage.getCommandType()) {
             case CREATE -> applicationService.create(applicationRequest);
             case DELETE -> applicationService.delete(applicationRequest.getId());
             case PATCH -> applicationService.patch(applicationRequest);
-            default ->
-                    throw new IllegalArgumentException("Unsupported CommandType: " + commandMessage.getCommandType());
+            default -> log.error("Unsupported CommandType: " + commandMessage.getCommandType());
         }
     }
 

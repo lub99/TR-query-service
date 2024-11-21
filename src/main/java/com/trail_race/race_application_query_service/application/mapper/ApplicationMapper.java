@@ -10,9 +10,8 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Objects;
 
-@Mapper(componentModel = "spring", imports = Objects.class)
+@Mapper(componentModel = "spring")
 @Component
 public abstract class ApplicationMapper {
 
